@@ -8,7 +8,7 @@ await import("./src/env.mjs")
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [],
+    domains: ["resizer.otstatic.com"],
   },
   experimental: {
     serverActions: true,
