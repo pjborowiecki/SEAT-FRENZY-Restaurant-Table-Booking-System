@@ -1,6 +1,6 @@
 ## About the Project
 
-![public/images/screenshot](./public/images/screenshots/screenshot.png)
+![public/images/screenshot](./public/images/screenshots/screenshot1.png)
 
 **SeatFrenzy** is a restaraunt booking system, allowing visitors to quickly check availability and easily book a table at their favourite restaurant. It also allows restaurant owners to promote their venues buy listing them on the website, and to manage their bookings or information displayed on the website.
 
