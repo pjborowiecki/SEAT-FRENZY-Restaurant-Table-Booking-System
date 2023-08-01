@@ -1,8 +1,10 @@
 ## About the Project
 
-This repository contains a source code for a restaurant table booking website, similar to OpenTable. This full-stack project is build with Next.js 13, NextAuth, Prisma, PostgreSQL database hosted with Supabase, TailwindCSS, ShadCN-UI, React Hook Form, and Zod.
+![public/images/screenshot](./public/images/screenshots/screenshot.png)
 
-This project is still in development. Please check back soon.
+**SeatFrenzy** is a restaraunt booking system, allowing visitors to quickly check availability and easily book a table at their favourite restaurant. It also allows restaurant owners to promote their venues buy listing them on the website, and to manage their bookings or information displayed on the website.
+
+**<u>This project is still in development. Please check back soon.</u>**
 
 ### Tech Stack:
 
