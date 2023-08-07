@@ -1,4 +1,4 @@
-import { MenuItemCard } from "@/components/menu/menu-item-card"
+import { MenuItemCard } from "@/components/old/menu-item-card"
 
 export function Menu() {
   return (

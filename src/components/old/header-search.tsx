@@ -1,4 +1,4 @@
-import { SearchBar } from "@/components/search-bar"
+import { SearchBar } from "@/components/old/search-bar"
 
 export function HeaderSearch() {
   return (

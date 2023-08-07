@@ -7,7 +7,7 @@ import { Icons } from "@/components/icons"
 import { Shell } from "@/components/shells/shell"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-export function SiteFooter() {
+export function Footer() {
   return (
     <footer className="w-full border-t bg-background">
       <Shell as="div">

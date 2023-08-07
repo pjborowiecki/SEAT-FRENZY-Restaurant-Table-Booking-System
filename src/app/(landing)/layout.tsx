@@ -1,5 +1,5 @@
-import { SiteFooter } from "@/components/layouts/site-footer"
-import { SiteHeader } from "@/components/layouts/site-header"
+import { Footer } from "@/components/layouts/footer"
+import { HeaderMain } from "@/components/layouts/headers/header-main"
 
 interface LandingProps {
   children: React.ReactNode
@@ -8,9 +8,9 @@ interface LandingProps {
 export default function LandingLayout({ children }: LandingProps) {
   return (
     <div className="relative flex min-h-screen flex-col">
-      <SiteHeader />
+      <HeaderMain />
       <main className="flex-1">{children}</main>
-      <SiteFooter />
+      <Footer />
     </div>
   )
 }

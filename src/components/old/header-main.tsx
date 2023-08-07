@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { SearchBar } from "@/components/search-bar"
+import { SearchBar } from "@/components/old/search-bar"
 
 export function HeaderMain() {
   return (

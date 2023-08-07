@@ -12,7 +12,7 @@ model Venue {
   name        String
   description String
   slug        String     @unique
-  fanciness   Fanciness
+  // fanciness   Fanciness
   main_image  String
   images      String[]
   open_time   String
@@ -22,7 +22,7 @@ model Venue {
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
   menu_items  MenuItem[]
-  cuising     Cuisine    @relation(fields: [cuisine_id], references: [id])
+  cuisine     Cuisine    @relation(fields: [cuisine_id], references: [id])
   location    Location   @relation(fields: [location_id], references: [id])
 }
 
@@ -51,8 +51,8 @@ model Cuisine {
   restaurants Venue[]
 }
 
-enum Fanciness {
-  CHEAP
-  REGULAR
-  EXPENSIVE
-}
+// enum Fanciness {
+//   CHEAP
+//   REGULAR
+//   EXPENSIVE
+// }

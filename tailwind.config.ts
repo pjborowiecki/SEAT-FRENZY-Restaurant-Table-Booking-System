@@ -17,6 +17,8 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        headerGradientFrom: "hsl(var(--header-gradient-from))",
+        headerGradientTo: "hsl(var(--header-gradient-to))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -1,5 +1,6 @@
-import { BookingForm } from "@/components/forms/booking-form"
-import { HeaderBooking } from "@/components/layouts/header-booking"
+import { BookingForm } from "@/components/old/booking-form"
+import { HeaderBooking } from "@/components/old/header-booking"
+import { Shell } from "@/components/shells/shell"
 
 export default function Book() {
   return (
