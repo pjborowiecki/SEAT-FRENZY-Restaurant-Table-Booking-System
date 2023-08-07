@@ -1,4 +1,4 @@
-import { VenueReviewCard } from "@/components/venue-review-card"
+import { VenueReviewCard } from "@/components/old/venue-review-card"
 
 export function VenueReviews() {
   return (

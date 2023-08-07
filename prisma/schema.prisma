@@ -56,3 +56,17 @@ model Cuisine {
 //   REGULAR
 //   EXPENSIVE
 // }
+
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  date        DateTime
+  time        String
+  size        Int
+  
+  // user_id     Int
+  // venue_id    Int
+  // venue       Venue    @relation(fields: [venue_id], references: [id])
+}
