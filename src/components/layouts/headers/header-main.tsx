@@ -40,7 +40,7 @@ export function HeaderMain() {
       </div>
 
       {/* Heading and Search Bar */}
-      <div className="mb-10 flex flex-1 flex-col items-center justify-center gap-3">
+      <div className="flex flex-1 flex-col items-center justify-center gap-3 pb-16 pt-8">
         <h1 className="text-[40px] font-bold text-primary">
           Easily book a table for any occasion
         </h1>

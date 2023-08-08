@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import type { Venue } from "@prisma/client"
+import type { Venue } from "@/types"
 
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -61,7 +61,7 @@ export function VenueCard({
             <div className="flex gap-3">
               <p>Mediterranean</p>
               <p>$$$$</p>
-              <p>Warsaw</p>
+              <p>{venue.location_id}</p>
             </div>
           </CardDescription>
         </CardContent>

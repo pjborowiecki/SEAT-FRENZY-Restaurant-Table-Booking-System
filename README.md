@@ -25,6 +25,13 @@
 ## About the Project
 
 ![public/images/screenshot](./public/images/screenshots/screenshot1.png)
+<br>
+
+![public/images/screenshot2](./public/images/screenshots/screenshot2.png)
+<br>
+
+![public/images/screenshot3](./public/images/screenshots/screenshot3.png)
+<br>
 
 **SeatFrenzy** is a restaraunt booking system, allowing visitors to quickly check availability and easily book a table at their favourite restaurant. It also allows restaurant owners to promote their venues by listing them on the website, and to manage their bookings or information displayed on the website.
 
@@ -81,3 +88,11 @@ Distributed under the MIT License.
 Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - hello@pjborowiecki.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## TODO:
+
+- [ ] Fix hydration errors (ui/card component)
+- [ ] Finish styling components
+- [ ] Finish forms
+- [ ] Finish auth
+- [ ] Add form validation

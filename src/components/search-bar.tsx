@@ -4,7 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import type { Venue } from "@prisma/client"
 
-import { cn, isMacOs } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { useDebounce } from "@/hooks/use-debounce"
 import { Button } from "@/components/ui/button"
 import {
@@ -75,11 +75,8 @@ export function SearchBar() {
         <Icons.search className="h-4 w-4 md:mr-2" aria-hidden="true" />
         <span className="hidden md:inline-flex">Search venues...</span>
         <span className="sr-only">Search venues</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 xl:flex">
-          <abbr title={isMacOs() ? "Command" : "Control"}>
-            {isMacOs() ? "⌘" : "Ctrl+"}
-          </abbr>
-          K
+        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 md:flex">
+          <abbr title={"Control"}>{"Ctrl+"}</abbr>K
         </kbd>
       </Button>
       <CommandDialog position="top" open={isOpen} onOpenChange={setIsOpen}>

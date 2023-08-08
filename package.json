@@ -10,6 +10,7 @@
     "db:push": "npx prisma db push",
     "db:pull": "npx prisma db pull",
     "db:generate": "npx prisma generate",
+    "db:seed": "ts-node prisma/seed.ts",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "typecheck": "tsc --noEmit",

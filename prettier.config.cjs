@@ -11,9 +11,11 @@ module.exports = {
     "<THIRD_PARTY_MODULES>",
     "",
     "^types$",
+
     "^@/types/(.*)$",
     "^@/config/(.*)$",
     "^@/lib/(.*)$",
+    "^@/controllers/(.*)$",
     "^@/hooks/(.*)$",
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",
@@ -32,4 +34,4 @@ module.exports = {
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
   ],
-};
+}

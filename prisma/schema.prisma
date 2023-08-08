@@ -12,7 +12,6 @@ model Venue {
   name        String
   description String
   slug        String     @unique
-  // fanciness   Fanciness
   main_image  String
   images      String[]
   open_time   String
@@ -21,6 +20,7 @@ model Venue {
   cuisine_id  Int
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
+  fanciness   FANCINESS
   menu_items  MenuItem[]
   cuisine     Cuisine    @relation(fields: [cuisine_id], references: [id])
   location    Location   @relation(fields: [location_id], references: [id])
@@ -41,6 +41,7 @@ model Location {
   id          Int      @id @default(autoincrement())
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+  name        String
   restaurants Venue[]
 }
 
@@ -48,25 +49,12 @@ model Cuisine {
   id          Int      @id @default(autoincrement())
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+  name        String
   restaurants Venue[]
 }
 
-// enum Fanciness {
-//   CHEAP
-//   REGULAR
-//   EXPENSIVE
-// }
-
-
-model Booking {
-  id          Int      @id @default(autoincrement())
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  date        DateTime
-  time        String
-  size        Int
-  
-  // user_id     Int
-  // venue_id    Int
-  // venue       Venue    @relation(fields: [venue_id], references: [id])
+enum FANCINESS {
+  CHEAP
+  REGULAR
+  EXPENSIVE
 }
