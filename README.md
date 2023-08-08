@@ -93,6 +93,7 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 
 - [ ] Fix hydration errors (ui/card component)
 - [ ] Finish styling components
+- [ ] Fix and improve responsiveness
 - [ ] Finish forms
 - [ ] Finish auth
 - [ ] Add form validation

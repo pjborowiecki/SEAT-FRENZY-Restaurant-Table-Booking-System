@@ -10,6 +10,7 @@ export const fetchVenues = async (): Promise<Venue[]> => {
       cuisine: true,
       location: true,
       fanciness: true,
+      slug: true,
     },
   })
 }

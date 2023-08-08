@@ -12,7 +12,11 @@ export default async function Home() {
       <HeaderMain />
       <Shell className="flex flex-wrap justify-center">
         {venues.map((venue) => (
-          <VenueCard venue={venue} key={venue.id} />
+          <VenueCard
+            venue={venue}
+            key={venue.id}
+            className="transition-all duration-200 ease-in-out hover:scale-105"
+          />
         ))}
       </Shell>
     </>

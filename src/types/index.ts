@@ -7,4 +7,5 @@ export interface Venue {
   cuisine: Cuisine
   location: Location
   fanciness: FANCINESS
+  slug: string
 }

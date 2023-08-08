@@ -58,10 +58,32 @@ export function VenueCard({
               <p>9 reviews</p>
             </div>
 
-            <div className="flex gap-3">
-              <p>Mediterranean</p>
-              <p>$$$$</p>
-              <p>{venue.location_id}</p>
+            <div className="flex gap-1 capitalize text-primary">
+              {/* Cuisine */}
+              <p>{venue.cuisine.name}</p>
+              <span>•</span>
+
+              {/* Fanciness */}
+              {venue.fanciness === "CHEAP" && (
+                <p>
+                  <span className="font-medium">$</span>
+                  <span className="opacity-50">$$</span>
+                </p>
+              )}
+              {venue.fanciness === "REGULAR" && (
+                <p>
+                  <span className="font-medium">$$</span>
+                  <span className="opacity-50">$</span>
+                </p>
+              )}
+              {venue.fanciness === "EXPENSIVE" && (
+                <p className="font-medium">$$$</p>
+              )}
+
+              <span>•</span>
+
+              {/* Location */}
+              <p>{venue.location.name}</p>
             </div>
           </CardDescription>
         </CardContent>
