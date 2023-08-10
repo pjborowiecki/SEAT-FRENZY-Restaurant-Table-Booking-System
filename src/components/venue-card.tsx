@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import type { Venue } from "@/types"
+import type { Venue } from "@/db/schema"
 
 import { cn } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Icons } from "@/components/icons"
 
 interface VenueCardProps extends React.HTMLAttributes<HTMLDivElement> {
   venue: Venue
@@ -26,6 +27,8 @@ export function VenueCard({
   className,
   ...props
 }: VenueCardProps) {
+  // console.log("venue.name: ", venue.name)
+
   return variant === "default" ? (
     <Card
       className={cn(
@@ -40,14 +43,28 @@ export function VenueCard({
       >
         <CardHeader className="p-0">
           <AspectRatio ratio={4 / 3}>
-            <Image
-              src={venue.main_image}
-              alt={`${venue.name} main promo image`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover"
-              loading="lazy"
-              fill
-            />
+            {venue?.images?.length ? (
+              <Image
+                src={venue.images[0]?.url ?? "/images/venue-placeholder.webp"}
+                alt={`${venue.name} main promo image`}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+                loading="lazy"
+                fill
+              />
+            ) : (
+              <div
+                aria-label="Placeholder"
+                role="img"
+                aria-roledescription="placeholder"
+                className="flex h-full w-full items-center justify-center bg-secondary"
+              >
+                <Icons.placeholder
+                  className="h-9 w-9 text-muted-foreground"
+                  aria-hidden="true"
+                />
+              </div>
+            )}
           </AspectRatio>
         </CardHeader>
         <CardContent className="mt-4 flex flex-col gap-4">
@@ -60,30 +77,30 @@ export function VenueCard({
 
             <div className="flex gap-1 capitalize text-primary">
               {/* Cuisine */}
-              <p>{venue.cuisine.name}</p>
+              <p>{venue.cuisineId}</p>
               <span>•</span>
 
               {/* Fanciness */}
-              {venue.fanciness === "CHEAP" && (
+              {venue.priciness === "cheap" && (
                 <p>
                   <span className="font-medium">$</span>
                   <span className="opacity-50">$$</span>
                 </p>
               )}
-              {venue.fanciness === "REGULAR" && (
+              {venue.priciness === "regular" && (
                 <p>
                   <span className="font-medium">$$</span>
                   <span className="opacity-50">$</span>
                 </p>
               )}
-              {venue.fanciness === "EXPENSIVE" && (
+              {venue.priciness === "expensive" && (
                 <p className="font-medium">$$$</p>
               )}
 
               <span>•</span>
 
               {/* Location */}
-              <p>{venue.location.name}</p>
+              <p>{venue.locationId}</p>
             </div>
           </CardDescription>
         </CardContent>

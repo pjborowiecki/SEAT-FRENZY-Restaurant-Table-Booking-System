@@ -1,23 +1,48 @@
-import { fetchVenues } from "@/controllers/venue"
-import { HeaderMain } from "@/components/layouts/headers/header-main"
+import type { Metadata } from "next"
+import { getVenuesAction } from "@/actions/venue"
+import type { Venue } from "@/db/schema"
+import { env } from "@/env.mjs"
+
+import { MainHeader } from "@/components/layouts/headers/header-main"
 import { Shell } from "@/components/shells/shell"
-import { VenueCard } from "@/components/venue-card"
+import { Venues } from "@/components/venues"
 
-export default async function Home() {
-  const venues = await fetchVenues()
+export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  title: "Venues",
+  description:
+    "Choose a venue, check availability and easily book a table. It's that simple!",
+}
 
-  console.log({ venues })
+interface HomePageProps {
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
+}
+
+export default async function Home({ searchParams }: HomePageProps) {
+  const { page, per_page, sort } = searchParams ?? {}
+
+  // Venues transaction
+  const limit = typeof per_page === "string" ? parseInt(per_page) : 10
+  const offset = typeof page === "string" ? (parseInt(page) - 1) * limit : 0
+
+  const venuesTransaction = await getVenuesAction({
+    limit: limit,
+    offset: offset,
+    sort:
+      typeof sort === "string"
+        ? (sort as `${keyof Venue | "name"}.${"asc" | "desc"}`)
+        : "name.asc",
+  })
+
+  const pageCount = Math.ceil(venuesTransaction.total / limit)
+
   return (
     <>
-      <HeaderMain />
+      <MainHeader />
       <Shell className="flex flex-wrap justify-center">
-        {venues.map((venue) => (
-          <VenueCard
-            venue={venue}
-            key={venue.id}
-            className="transition-all duration-200 ease-in-out hover:scale-105"
-          />
-        ))}
+        <Venues venues={venuesTransaction.items} pageCount={pageCount} />
       </Shell>
     </>
   )

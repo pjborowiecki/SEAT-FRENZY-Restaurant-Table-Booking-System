@@ -47,13 +47,14 @@ The goals is not only to make it a table booking system, but also a full restaur
 - **Framework:** [Next.js 13](https://nextjs.org)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com)
-- **Database:** [SupaBase PostgreSQL](https://supabase.com/)
-- **ORM:** [Prisma ORM](https://prisma.io)
-- **Authentication:** [NextAuth](https://next-auth.js.org/)
+- **Database:** [PlanetScale MySQL](https://planetscale.com/)
+- **ORM:** [Drizzle ORM](https://orm.drizzle.team/)
+- **Authentication:** [Clerk](https://clerk.com/)
 - **Forms:** [React Hook Form](https://react-hook-form.com)
 - **Email:** [React Email](https://react.email)
 - **Validation:** [Zod](https://zod.dev/)
 - **Hosting:** [Vercel](https://vercel.com)
+- **Project Management:** [Jira](https://www.atlassian.com/software/jira)
 
 <br>
 <!-- CONTRIBUTING -->
@@ -91,9 +92,17 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 
 ## TODO:
 
-- [ ] Fix hydration errors (ui/card component)
+- [ ] Fix the `getVenuesAction` server action
+- [ ] Finish the `venues` component
+- [ ] Modify validation, so venues with the same name are allowed, as long as they are in different locations
+- [ ] Modify the venue model, so it is possible to define multiple opening and closing times for each day of the week
+- [ ] Decide on the `cuisine` and `location` types for a Venue model, then update forms, schemas, and validations accordingly
+- [ ] Decide on the `opening time` and `closing time` types for a Venue model, then update forms, schemas, and validations accordingly
+- [ ] Decide on the `date` and `time` types for a Booking model, then update forms, schemas, and validations accordingly
+- [ ] Complete the loading pages
+- [x] Fix hydration errors (ui/card component)
 - [ ] Finish styling components
 - [ ] Fix and improve responsiveness
 - [ ] Finish forms
-- [ ] Finish auth
 - [ ] Add form validation
+- [ ] Add authentication

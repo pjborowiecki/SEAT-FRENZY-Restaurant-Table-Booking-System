@@ -1,11 +1,18 @@
 import {
+  AlertTriangle,
+  ChevronDown,
+  Crop,
   Eye,
   EyeOff,
+  Image,
   Loader2,
   Moon,
+  RefreshCw,
   Search,
   Star,
   SunMedium,
+  Trash,
+  UploadCloud,
   X,
   type LucideIcon,
   type LucideProps,
@@ -14,6 +21,9 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  chevronDown: ChevronDown,
+  crop: Crop,
+  reset: RefreshCw,
   sun: SunMedium,
   moon: Moon,
   star: Star,
@@ -22,6 +32,10 @@ export const Icons = {
   hide: EyeOff,
   close: X,
   spinner: Loader2,
+  trash: Trash,
+  upload: UploadCloud,
+  placeholder: Image,
+  warning: AlertTriangle,
   logo: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"

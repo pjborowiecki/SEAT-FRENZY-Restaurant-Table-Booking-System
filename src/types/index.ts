@@ -1,11 +1,11 @@
-import type { Cuisine, FANCINESS, Location } from "@prisma/client"
+import type { FileWithPath } from "react-dropzone"
 
-export interface Venue {
-  id: number
+export interface StoredFile {
+  id: string
   name: string
-  main_image: string
-  cuisine: Cuisine
-  location: Location
-  fanciness: FANCINESS
-  slug: string
+  url: string
+}
+
+export type FileWithPreview = FileWithPath & {
+  preview: string
 }

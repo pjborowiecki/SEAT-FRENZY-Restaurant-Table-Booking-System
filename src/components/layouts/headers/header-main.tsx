@@ -5,7 +5,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { SearchBar } from "@/components/search-bar"
 
-export function HeaderMain() {
+export function MainHeader() {
   return (
     <header className=" sticky top-0 z-40 flex h-full w-full flex-col border-b bg-accent">
       {/* NavBar */}
