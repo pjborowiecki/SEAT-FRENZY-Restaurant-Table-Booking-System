@@ -92,6 +92,7 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 
 ## TODO:
 
+- [ ] Update headers
 - [ ] Fix the `getVenuesAction` server action
 - [ ] Finish the `venues` component
 - [ ] Modify validation, so venues with the same name are allowed, as long as they are in different locations
@@ -104,6 +105,14 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 - [x] Fix hydration errors (ui/card component)
 - [ ] Finish styling components
 - [ ] Fix and improve responsiveness
-- [ ] Finish forms
-- [ ] Add form validation
-- [ ] Add authentication
+- [ ] Finish the booking and venue forms (with validations)
+- [x] Add auth form validation
+- [x] Add authentication
+- [ ] Add blogging functionality
+- [ ] Add a newsletter
+- [ ] Create the terms and conditions pages
+- [ ] Crete the privacy policy page
+- [ ] Create the about page
+- [ ] Create the contact page
+- [ ] Create the faq page
+- [ ] Add email notifications
