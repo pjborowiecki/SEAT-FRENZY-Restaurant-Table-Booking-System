@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 
 import type { Metadata } from "next"
 import { env } from "@/env.mjs"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
@@ -59,19 +60,21 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
-        <Toaster />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable,
+            fontMono.variable
+          )}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

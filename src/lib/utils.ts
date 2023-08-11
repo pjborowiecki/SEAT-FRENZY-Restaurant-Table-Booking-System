@@ -1,3 +1,4 @@
+import { isClerkAPIResponseError } from "@clerk/nextjs"
 import { clsx, type ClassValue } from "clsx"
 import { toast } from "sonner"
 import { twMerge } from "tailwind-merge"
@@ -46,4 +47,19 @@ export function formatBytes(
   return `${(bytes / Math.pow(1024, i)).toFixed(decimals)} ${
     sizeType === "accurate" ? accurateSizes[i] ?? "Bytest" : sizes[i] ?? "Bytes"
   }`
+}
+
+export function catchClerkError(err: unknown) {
+  const unknownErr = "Something went wrong, please try again later."
+
+  if (err instanceof z.ZodError) {
+    const errors = err.issues.map((issue) => {
+      return issue.message
+    })
+    return toast(errors.join("\n"))
+  } else if (isClerkAPIResponseError(err)) {
+    return toast.error(err.errors[0]?.longMessage ?? unknownErr)
+  } else {
+    return toast.error(unknownErr)
+  }
 }

@@ -100,6 +100,7 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 - [ ] Decide on the `opening time` and `closing time` types for a Venue model, then update forms, schemas, and validations accordingly
 - [ ] Decide on the `date` and `time` types for a Booking model, then update forms, schemas, and validations accordingly
 - [ ] Complete the loading pages
+- [ ] Make the search bar functional
 - [x] Fix hydration errors (ui/card component)
 - [ ] Finish styling components
 - [ ] Fix and improve responsiveness
