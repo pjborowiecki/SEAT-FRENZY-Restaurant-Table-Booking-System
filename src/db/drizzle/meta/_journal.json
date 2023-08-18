@@ -15,6 +15,20 @@
       "when": 1691708759449,
       "tag": "0001_soft_serpent_society",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1692379542832,
+      "tag": "0002_thin_captain_midlands",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1692384157237,
+      "tag": "0003_melted_lady_vermin",
+      "breakpoints": true
     }
   ]
 }
