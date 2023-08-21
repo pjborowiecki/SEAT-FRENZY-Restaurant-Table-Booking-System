@@ -12,6 +12,8 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string(),
     UPLOADTHING_SECRET: z.string(),
     UPLOADTHING_APP_ID: z.string(),
+    NGROK_AUTHTOKEN: z.string(),
+    SVIX_AUTHTOKEN: z.string(),
   },
 
   /**
@@ -37,6 +39,8 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
     UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
+    NGROK_AUTHTOKEN: process.env.NGROK_AUTHTOKEN,
+    SVIX_AUTHTOKEN: process.env.SVIX_AUTHTOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.

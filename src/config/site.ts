@@ -21,29 +21,29 @@ export const siteConfig = {
   links,
   mainNav: [
     {
-      title: "Landing",
+      title: "About Us",
       items: [
         {
-          title: "Venues",
-          href: "/",
-          description: "All the venues we have to offer",
+          title: "Read More",
+          href: "/about",
+          description: "Learn more about SeatFrenzy",
           items: [],
         },
         {
-          title: "Blog",
-          href: "/blog",
-          description: "Read our latest blog posts",
+          title: "FAQ",
+          href: "/faq",
+          description: "Find out the answers",
           items: [],
         },
         {
-          title: "Dashboard",
-          href: "/dashboard/",
-          description: "Manage your bookings and venues",
+          title: "Contact",
+          href: "/contact",
+          description: "Get in touch with us",
           items: [],
         },
       ],
     },
-  ],
+  ] satisfies MainNavItem[],
   footerNav: [
     {
       title: "Help",

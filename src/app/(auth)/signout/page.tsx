@@ -1,4 +1,4 @@
-import { LogOutButtons } from "@/components/auth/logout-buttons"
+import { SignOutButtons } from "@/components/auth/signout-buttons"
 import { PageHeader } from "@/components/page-header"
 import { Shell } from "@/components/shells/shell"
 
@@ -11,7 +11,7 @@ export default function SignOutPage() {
         size="sm"
         className="text-center"
       />
-      <LogOutButtons />
+      <SignOutButtons />
     </Shell>
   )
 }

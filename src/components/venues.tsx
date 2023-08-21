@@ -55,7 +55,7 @@ export function Venues({ venues, pageCount }: VenuesProps) {
     [searchParams]
   )
 
-  console.log(venues)
+  // console.log(venues)
 
   return (
     <div className="flex flex-col space-y-6">

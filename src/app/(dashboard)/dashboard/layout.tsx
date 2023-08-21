@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs"
 import { dashboardConfig } from "@/config/dashboard"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Footer } from "@/components/layouts/footer"
-import { DashboardHeader } from "@/components/layouts/headers/header-dashboard"
+import { DashboardHeader } from "@/components/layouts/header-dashboard"
 import { SidebarNav } from "@/components/layouts/sidebar-nav"
 
 interface DashboardLayoutProps {

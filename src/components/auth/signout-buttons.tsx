@@ -10,7 +10,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Icons } from "@/components/icons"
 
-export function LogOutButtons() {
+export function SignOutButtons() {
   const router = useRouter()
   const mounted = useMounted()
   const [isPending, startTransition] = React.useTransition()
@@ -26,7 +26,7 @@ export function LogOutButtons() {
           }
         >
           <Button
-            aria-label="Log out"
+            aria-label="Sign out"
             size="sm"
             className="w-full"
             disabled={isPending}
@@ -34,7 +34,7 @@ export function LogOutButtons() {
             {isPending && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Log out
+            Sign out
           </Button>
         </SignOutButton>
       ) : (
@@ -44,7 +44,7 @@ export function LogOutButtons() {
             "w-full bg-muted text-muted-foreground"
           )}
         >
-          Log out
+          Sign out
         </Skeleton>
       )}
       <Button

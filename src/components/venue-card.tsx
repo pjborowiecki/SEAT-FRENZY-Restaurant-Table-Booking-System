@@ -27,8 +27,6 @@ export function VenueCard({
   className,
   ...props
 }: VenueCardProps) {
-  // console.log("venue.name: ", venue.name)
-
   return variant === "default" ? (
     <Card
       className={cn(

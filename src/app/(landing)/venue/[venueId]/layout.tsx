@@ -1,5 +1,5 @@
 import { BookingWidget } from "@/components/booking-widget"
-import { HeaderVenue } from "@/components/layouts/headers/header-venue"
+import { HeaderVenue } from "@/components/layouts/header-venue"
 import { Shell } from "@/components/shells/shell"
 
 interface VenueLayoutProps {

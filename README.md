@@ -206,6 +206,7 @@ Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - 
 ## ToDo
 
 - [ ] Integrate Clerk database with the app database schema via webhooks
+- [ ] Refactor and improve the Clerk auth webhook handler
 - [ ] Update headers (merge into one component with variants)
 - [ ] Fix the `getVenuesAction` server action
 - [ ] Finish the `venues` component
