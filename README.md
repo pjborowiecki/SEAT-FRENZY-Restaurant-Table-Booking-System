@@ -115,12 +115,20 @@ The goals is not only to make it a table booking system, but also a full restaur
 
       - _NOTE_: The reason for using Ngrok is to sync users data to our backend. Since authentication and user management happens on Clerk's side, data eventually need to reach the application's back end to allow for creating more complex relations in our database schemas. Clerk provides a way to do that via webhooks, but it requires a public URL. Ngrok allows us to create a tunnel to our local server, so we can test the webhooks locally. The details of the setup can be found [here](https://clerk.com/docs/users/sync-data-to-your-backend). See [this page](https://ngrok.com/docs/integrations/clerk/webhooks/) for instructions on how to set up Ngrok with Clerk for local development.
 
-      ![clerkNgrokWebhookIllustration](https://clerk.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fe1ql88v4%2Fproduction%2F344b217021b87801cc586c96df20c0fd713a795c-2775x2106.png%3Ffit%3Dmax%26auto%3Dformat&w=1920&q=75) <br><br>
+      ![clerkNgrokWebhookIllustration](https://clerk.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fe1ql88v4%2Fproduction%2F344b217021b87801cc586c96df20c0fd713a795c-2775x2106.png%3Ffit%3Dmax%26auto%3Dformat&w=1920&q=75)
 
       - Ensure you have ngrok installed on your machine
       - Create a new account at [Ngrok](https://ngrok.com)
       - Go to `Yout Authtoken` tab on the left-hand side of the dashboard and copy the token
-      - Run `ngrok config add-authtoken <your_auth_token>` in your terminal window
+      - Run `ngrok config add-authtoken <your_auth_token>` in your terminal window <br><br>
+
+    - **Svix:** <br><br>
+
+      - _NOTE_: Because of the way webhooks work, attackers can impersonate services by simply sending a fake webhook to an endpoint. Think about it: it's just an HTTP POST from an unknown source. This is a potential security hole for many applications, or at the very least, a source of problems. In order to prevent it, Svix signs every webhook and its metadata with a unique key for each endpoint. This signature can then be used to verify the webhook indeed comes from Svix, and only process it if it is. <br><br>
+
+      - Create a new account with [Svix](https://svix.com)
+      - Follow the instructions to add a new app by pasting the commands given in your dashboard into your terminal window
+      - Create a new API Access token and add it to your `.env` file as `SVIX_AUTHTOKEN`<br><br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p><br>
 
