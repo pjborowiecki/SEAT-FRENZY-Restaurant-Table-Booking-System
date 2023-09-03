@@ -24,7 +24,7 @@ import {
 export const users = mysqlTable("users", {
   id: serial("id").primaryKey(),
   clerkId: varchar("clerkId", { length: 255 }).notNull(),
-  username: varchar("username", { length: 255 }).notNull(),
+  username: varchar("username", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
   firstName: varchar("firstName", { length: 255 }),
   lastName: varchar("lastName", { length: 255 }),

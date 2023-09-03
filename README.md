@@ -154,10 +154,12 @@ The goals is not only to make it a table booking system, but also a full restaur
 
 7. Go to your Clerk account dashboard, click on `Webhooks` tab on the left-hand side menu, and click on `Add Webhook` button. Paste the forwarding address into the `Endpoint Url` field. Scroll to the bottom of the `Message Filtering` section and select all user events: `user.created`, `user.deleted`, and `user.updated`. Click on `Create` button. <br><br>
 
-8. Detailed instructions for testing can be found [here](https://ngrok.com/docs/integrations/clerk/webhooks/). The output from step 5 should include a `Web Interface` local address, which is usually [http://localhost:4040](https://localhost:4040) and can be accessed for inspecting the webhook requests. When you click on a request, you can see details of both the request and the response. <br><br>
+8. Copy the `Signing Secret` from the `Webhooks` tab and add it to your `.env` file as `CLERK_WEBHOOK_SECRET`. <br><br>
 
-9. Your app should be available at [http://localhost:3000](https://localhost:3000)
-   <br>
+9. Detailed instructions for testing can be found [here](https://ngrok.com/docs/integrations/clerk/webhooks/). The output from step 5 should include a `Web Interface` local address, which is usually [http://localhost:4040](https://localhost:4040) and can be accessed for inspecting the webhook requests. When you click on a request, you can see details of both the request and the response. <br><br>
+
+10. Your app should be available at [http://localhost:3000](https://localhost:3000)
+    <br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p><br>
 
