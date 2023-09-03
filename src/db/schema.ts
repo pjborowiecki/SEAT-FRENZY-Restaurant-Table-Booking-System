@@ -16,35 +16,55 @@ import {
 } from "drizzle-orm/mysql-core"
 
 /* TODO
+ Research relations more, figure out what to do with tags/cuisine etc
  Figure out how to handle opening and closing times
  I'm thinking of having a table that stores days of the week, then one storing opening closing times for restaurants linked to days with a relation?
 */
 
+const timeValues = mysqlEnum("timeValues", [
+  "00:00:00",
+  "00:30:00",
+])
+
 // MODELS
+
+// Define a new table for venue opening hours
+export const venueOpeningTimes = mysqlTable("venueOpeningTimes", {
+  id: serial("id").primaryKey(),
+  venueId: int("venueId").notNull(),
+  day: mysqlEnum("day", ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]).notNull(),
+  openingTime: timeValues,
+  closingTime: time("closingTime").notNull(),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+})
+
 export const users = mysqlTable("users", {
   id: serial("id").primaryKey(),
   clerkId: varchar("clerkId", { length: 255 }).notNull(),
   username: varchar("username", { length: 255 }),
-  email: varchar("email", { length: 255 }).notNull(),
+  emailAddress: varchar("emailAddress", { length: 255 }).notNull(),
+  phoneNumber: varchar("phoneNumber", { length: 255 }).notNull(),
   firstName: varchar("firstName", { length: 255 }),
   lastName: varchar("lastName", { length: 255 }),
   createdAt: timestamp("createdAt").defaultNow(),
   updatedAt: timestamp("updatedAt").defaultNow(),
 })
 
-// export const venues = mysqlTable("venues", {
-//   id: serial("id").primaryKey(),
-//   slug: text("slug"),
-//   name: varchar("name", { length: 255 }).notNull(),
-//   email: varchar("email", { length: 255 }),
-//   // phone
-//   description: text("description").notNull(),
-//   // addressId: int("locationId").notNull().default(1),
-//   images: json("images").$type<StoredFile[] | null>().default(null),
-//   // tags: varchar("tags", { length: 255 }),
-//   createdAt: timestamp("createdAt").defaultNow(),
-//   updatedAt: timestamp("updatedAt").defaultNow(),
-// })
+export const venues = mysqlTable("venues", {
+  id: serial("id").primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  // addressId: int("locationId").notNull().default(1),
+  cuisineId: int("cuisineId").notNull(),
+  images: json("images").$type<StoredFile[] | null>().default(null),
+  // tags: varchar("tags", { length: 255 }),
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+})
 
 // export const bookings = mysqlTable("bookings", {
 //   id: serial("id").primaryKey(),
@@ -124,7 +144,7 @@ export const locations = mysqlTable("locations", {
 //   venueId: int("venueId").notNull(),
 //   capacity: int("capacity"),
 //   tableNumber: int("tableNumber").notNull(),
-//   location: mysqlEnum("location", ["Inside", "Outside"]),
+//   location: mysqlEnum("location", ["inside", "outside"]),
 //   createdAt: timestamp("createdAt").defaultNow(),
 //   updatedAt: timestamp("updatedAt").defaultNow(),
 // })
