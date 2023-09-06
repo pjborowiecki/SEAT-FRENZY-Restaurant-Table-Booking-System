@@ -1,56 +1,43 @@
-import { venues } from "@/db/schema"
+// import { PhoneNumberUtil } from 'google-libphonenumber';
 import * as z from "zod"
+
+/**
+ * TODO
+ * Test and finalise validation for the image field
+ * Update the validatePhoneNumber function, currently generic, need to get google-libphonenumber working
+ */
+
+function validateEmail(email: string): boolean {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(email);
+}
+
+function validatePhoneNumber(phone: string): boolean {
+  const re = /^\+?[1-9]\d{1,14}$/;
+  return re.test(phone);
+}
 
 export const venueSchema = z.object({
   name: z
     .string()
     .min(1, { message: "Name must be at least 1 character long" })
     .max(100, { message: "Name must be at most 100 characters long" }),
+  email: z
+    .string()
+    .refine(validateEmail, {
+      message: "Invalid email address"
+    })
+  ,
+  phone: z
+    .string()
+    .refine(validatePhoneNumber, {
+      message: "Invalid phone number"
+    })
+  ,
   description: z
     .string()
     .min(1, { message: "Description must be at least 1 character long" })
     .max(1000, { message: "Description must be at most 1000 characters long" }),
-  openTime: z
-    .enum(venues.openTime.enumValues, {
-      required_error: "Please select a valid opening time",
-    })
-    .default(venues.openTime.enumValues[4]),
-  closeTime: z
-    .enum(venues.closeTime.enumValues, {
-      required_error: "Please select a valid priciness level",
-    })
-    .default(venues.closeTime.enumValues[4]),
-  priciness: z
-    .enum(venues.priciness.enumValues, {
-      required_error: "Please select a valid priciness level",
-    })
-    .default(venues.priciness.enumValues[1]),
-  // cuisine: z
-  //   .string()
-  //   .min(1, { message: "Cuisine must be at least 1 character long" })
-  //   .max(100, { message: "Cuisine must be at most 100 characters long" }),
-  // location: z
-  //   .string()
-  //   .min(1, { message: "Location must be at least 1 character long" })
-  //   .max(100, { message: "Location must be at most 100 characters long" }),
-  cuisineId: z
-    .number()
-    .int()
-    .min(1, {
-      message: "CuisineId must be an integer between 1 and 7 inclusive",
-    })
-    .max(7, {
-      message: "CuisineId must be an integer between 1 and 7 inclusive",
-    }),
-  locationId: z
-    .number()
-    .int()
-    .min(1, {
-      message: "CuisineId must be an integer between 1 and 7 inclusive",
-    })
-    .max(7, {
-      message: "CuisineId must be an integer between 1 and 7 inclusive",
-    }),
   images: z
     .unknown()
     .refine((val) => {

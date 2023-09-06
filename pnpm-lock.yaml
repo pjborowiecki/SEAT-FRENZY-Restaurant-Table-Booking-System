@@ -71,6 +71,9 @@ dependencies:
   drizzle-orm:
     specifier: ^0.28.1
     version: 0.28.1(@planetscale/database@1.10.0)
+  google-libphonenumber:
+    specifier: ^3.2.33
+    version: 3.2.33
   lucide-react:
     specifier: ^0.263.1
     version: 0.263.1(react@18.2.0)
@@ -4792,6 +4795,11 @@ packages:
       merge2: 1.4.1
       slash: 4.0.0
     dev: true
+
+  /google-libphonenumber@3.2.33:
+    resolution: {integrity: sha512-1QKCvAlfq8zY1mviORI9lDzM3I/hwm9+h0CwYBTLq59DBbSHMd5zBOLqHZFiBLicRpwIz46Nynvbywj1XApKvA==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
