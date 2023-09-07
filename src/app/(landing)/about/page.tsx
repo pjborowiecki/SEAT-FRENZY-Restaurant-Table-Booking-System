@@ -45,7 +45,7 @@ export default function About({}: AboutPageProps) {
       description: "This is a valid description.",
       images: null
     }
-    addOutput(await venueActions.addVenueAction(validInput))
+    await venueActions.addVenueAction(validInput)
   }
   const addInvalidVenue = async () => {
     const validInput: venueActions.VenueType = {
@@ -55,7 +55,7 @@ export default function About({}: AboutPageProps) {
       description: "This is a valid description.",
       images: null
     }
-    addOutput(await venueActions.addVenueAction(validInput))
+    await venueActions.addVenueAction(validInput)
   }
   const getValidVenue = async () => {
     addOutput(await venueActions.getVenueAction(testVenue))
@@ -65,7 +65,8 @@ export default function About({}: AboutPageProps) {
     addOutput(await venueActions.getVenueAction(venueId))
   }
   const getAllVenues = async () => {
-    addOutput(await venueActions.getAllVenuesAction())
+    const result = await venueActions.getAllVenuesAction()
+    addOutput(`Count: ${result[1]}`)
   }
   const updateValidDescription = async () => {
     const validInput: venueActions.VenueDescriptionType = "New description"

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { db } from "@/db"
 import { venues } from "@/db/schema"
-import { eq } from "drizzle-orm"
+import { eq, sql } from "drizzle-orm"
 import type { z } from "zod"
 import { slugify } from "@/lib/utils"
 import { venueSchema } from "@/lib/validations/venue"
@@ -23,14 +23,14 @@ export type VenueEmailType = z.infer<typeof venueSchema['shape']['email']>
 export async function addVenueAction(venue: VenueType) {
   const validationResult = venueSchema.safeParse(venue)
   if (validationResult.success) {
-    const result =  await db.insert(venues).values({
+    const result = await db.insert(venues).values({
       name: validationResult.data.name,
       slug: slugify(validationResult.data.name!!),
       email: validationResult.data.email,
       phone: validationResult.data.phone,
       description: validationResult.data.description
     })
-    return `Successfully added venue ${validationResult.data.name}`
+    revalidatePath("/dashboard/venues")
   } else {
     throw new Error("Validation failed: " + JSON.stringify(validationResult.error))
   }
@@ -42,13 +42,19 @@ export async function deleteVenueAction(venueId: number) {
 }
 
 export async function getVenueAction(venueId: number) {
-  const result = await db.select().from(venues).where(eq(venues.id, venueId))
+  const result = await db.selectDistinct().from(venues)
   return JSON.stringify(result)
 }
 
 export async function getAllVenuesAction() {
-  const result = await db.select().from(venues)
-  return JSON.stringify(result)
+  const [items, total] = await db.transaction(async (tx) => {
+    const items = await tx.select().from(venues)
+    const total = await tx.select({
+      count: sql<number>`count(*)`,
+    }).from(venues)
+    return [items, Number(total[0]?.count) ?? 0]
+  })
+  return [items, total]
 }
 
 export async function setNameAction(venueId: number, newName: VenueNameType) {
