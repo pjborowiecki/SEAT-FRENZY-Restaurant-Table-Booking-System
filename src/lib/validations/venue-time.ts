@@ -1,7 +1,7 @@
 import * as z from "zod"
 import { db } from "@/db"
-import { venues } from "@/db/schema"
-import { eq } from "drizzle-orm"
+import { sql } from "drizzle-orm"
+import { venues } from "@/db/schema";
 
 /**
  * TODO
@@ -21,12 +21,9 @@ function isValidTime(time: string): boolean {
   return re.test(time);
 }
 
-function isValidVenue(venueId: number) {
-  const venue = db.select().from(venues).where(eq(venues.id, venueId))
-  if (venue != null) {
-    return true
-  }
-  return false
+async function isValidVenue(venueId: number) {
+  const id = await db.execute(sql`select * from ${venues} where ${venues.id} = ${venueId}`)
+  return (id != null)
 }
 
 export const venueTimeSchema = z.object({
