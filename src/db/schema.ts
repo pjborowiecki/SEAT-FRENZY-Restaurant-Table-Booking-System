@@ -132,7 +132,7 @@ export const tagsRelations = relations(tags, ({ many }) => ({
   venuesToTags: many(venuesToTags)
 }))
 
-export const dietaryRelations = relations(tags, ({ many }) => ({
+export const dietaryRelations = relations(dietary, ({ many }) => ({
   venuesToDietary: many(venuesToDietary)
 }))
 
