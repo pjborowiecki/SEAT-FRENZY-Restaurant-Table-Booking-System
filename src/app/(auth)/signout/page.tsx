@@ -1,4 +1,4 @@
-import { SignOutButtons } from "@/components/auth/signout-buttons"
+import { SignOutButtons } from "@/components/auth/signout-button"
 import { PageHeader } from "@/components/page-header"
 import { Shell } from "@/components/shells/shell"
 

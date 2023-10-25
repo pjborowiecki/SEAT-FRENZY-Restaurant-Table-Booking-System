@@ -2,13 +2,14 @@ import "@/styles/globals.css"
 
 import type { Metadata } from "next"
 import { env } from "@/env.mjs"
-import { ClerkProvider } from "@clerk/nextjs"
+import { Toaster } from "sonner"
 
+import { fontInter, fontJetBrainsMono } from "@/config/fonts"
 import { siteConfig } from "@/config/site"
-import { fontMono, fontSans } from "@/lib/fonts"
+import { AuthProvider } from "@/providers/auth-provider"
+import { ThemeProvider } from "@/providers/theme-provider"
 import { cn } from "@/lib/utils"
-import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from "@/components/providers/theme-provider"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -17,19 +18,18 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Restaurant table booking",
-    "Booking system",
-    "Table booking",
-    "Restaurant booking",
-    "OpenTable alternative",
-  ],
   authors: [
     {
-      name: "pjborowiecki",
-      url: "https://github.com/pjborowiecki",
+      name: siteConfig.author,
+      url: siteConfig.links.authorsWebsite,
     },
   ],
+  creator: siteConfig.author,
+  keywords: siteConfig.keywords,
+  robots: {
+    index: true,
+    follow: true,
+  },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@pjborowiecki",
+    creator: siteConfig.author,
   },
   icons: {
     icon: "/favicon.ico",
@@ -60,21 +60,26 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable,
-            fontMono.variable
-          )}
+    <html lang="en">
+      <body
+        className={cn(
+          "min-h-screen bg-background antialiased",
+          fontInter.variable,
+          fontJetBrainsMono.variable
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
-          <Toaster />
-        </body>
-      </html>
-    </ClerkProvider>
+          <AuthProvider>{children}</AuthProvider>
+          <TailwindIndicator />
+          <Toaster position="top-center" />
+        </ThemeProvider>
+        <Toaster />
+      </body>
+    </html>
   )
 }

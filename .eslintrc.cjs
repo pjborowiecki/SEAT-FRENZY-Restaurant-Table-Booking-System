@@ -25,6 +25,7 @@ const config = {
     tailwindcss: {
       callees: ["cn"],
       config: "./tailwind.config.ts",
+      classRegex: "^(class(Name)?|tw)$",
     },
     next: {
       rootDir: ["./"],

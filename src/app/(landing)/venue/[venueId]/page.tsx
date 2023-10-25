@@ -1,19 +1,19 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+// import { getVenuesAction } from "@/actions/venue"
 import { db } from "@/db"
-import { menuItems, venues } from "@/db/schema"
+// import { menuItems, venues } from "@/db/schema"
 import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
 
 import { MenuItems } from "@/components/menu-items"
+// import { Breadcrumbs } from "@/components/pagers/breadcrumbs"
 import { Shell } from "@/components/shells/shell"
 import { VenueReviewCard } from "@/components/venue-review-card"
 
-import { Shell } from "@/components/shells/shell"
-import { Breadcrumbs } from "@/components/pagers/breadcrumbs"
-import { getMenuItemsAction } from "@/app/actions/menu"
-import { getVenuesAction } from "@/actions/venue"
+// import { getMenuItemsAction } from "@/app/actions/menu"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 interface VenuePageProps {
   params: {
     venueId: string
-  },
+  }
   searchParams: {
     [key: string]: string | string[] | undefined
   }
@@ -36,26 +36,25 @@ export default async function VenuePage({
 }: VenuePageProps) {
   const venueId = Number(params.venueId)
 
-  const venue = await db.query.venues.findFirst({
-    where: eq(venues.id, venueId)
-  })
+  // const venue = await db.query.venues.findFirst({
+  //   where: eq(venues.id, venueId),
+  // })
 
-  if (!venue) {
-    notFound()
-  }
+  // if (!venue) {
+  //   notFound()
+  // }
 
-  const {page, per_page, venue_page} = searchParams
+  const { page, per_page, venue_page } = searchParams
 
   // menuItems transaction
   const limit = typeof per_page === "string" ? parseInt(per_page) : 10
   const offset = typeof page === "string" ? (parseInt(page) - 1) * limit : 0
 
-  const mennuItemsTransaction = await getMenuItemsAction({
-    limit: limit,
-    offset: offset,
-    venue_ids: String(venueId)
-  })
-
+  // const mennuItemsTransaction = await getMenuItemsAction({
+  //   limit: limit,
+  //   offset: offset,
+  //   venue_ids: String(venueId),
+  // })
 
   return (
     <Shell>
@@ -67,7 +66,7 @@ export default async function VenuePage({
 
       {/* VenueTitle */}
       <div className="mt-4 border-b pb-6">
-        <h1 className="text-[50px] font-bold">{venue.name}</h1>
+        {/* <h1 className="text-[50px] font-bold">{venue.name}</h1> */}
       </div>
 
       {/* VenueRating */}
@@ -83,7 +82,7 @@ export default async function VenuePage({
 
       {/* VenueDescription */}
       <div>
-        <p className="text-[18px] font-light">{venue.description}</p>
+        {/* <p className="text-[18px] font-light">{venue.description}</p> */}
       </div>
 
       {/* VenueImages */}

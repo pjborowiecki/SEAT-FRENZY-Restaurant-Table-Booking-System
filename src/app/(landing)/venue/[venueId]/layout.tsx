@@ -1,5 +1,5 @@
 import { BookingWidget } from "@/components/booking-widget"
-import { HeaderVenue } from "@/components/layouts/header-venue"
+import { VenueHeader } from "@/components/nav/header-venue"
 import { Shell } from "@/components/shells/shell"
 
 interface VenueLayoutProps {
@@ -9,7 +9,7 @@ interface VenueLayoutProps {
 export default function VenueLayout({ children }: VenueLayoutProps) {
   return (
     <>
-      <HeaderVenue />
+      <VenueHeader />
       <Shell className="relative flex items-start gap-6">
         <div className="mt-[-94px] w-[70%] rounded-md border bg-background">
           {/* TODO: Move Submneu from venu and menu pages here*/}

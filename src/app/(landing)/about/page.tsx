@@ -3,25 +3,23 @@
 /**
  * Been using this page to test server actions and validations :')
  */
+import { MouseEventHandler, useState } from "react"
+import * as cuisineActions from "@/actions/cuisine"
+import * as tagActions from "@/actions/tag"
+import * as venueActions from "@/actions/venue"
+import * as venueTimeActions from "@/actions/venue-time"
+import { string } from "zod"
 
 interface AboutPageProps {}
 
-import { useState } from 'react';
-import * as venueActions from "@/actions/venue"
-import * as cuisineActions from "@/actions/cuisine"
-import * as tagActions from "@/actions/tag"
-import * as venueTimeActions from "@/actions/venue-time"
-
-import { MouseEventHandler } from 'react';
-import { string } from 'zod';
 interface CustomButtonProps {
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  label: string;
+  onClick: MouseEventHandler<HTMLButtonElement>
+  label: string
 }
 const CustomButton = ({ onClick, label }: CustomButtonProps) => (
-  <button 
+  <button
     onClick={onClick}
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4"
+    className="m-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
   >
     {label}
   </button>
@@ -30,7 +28,6 @@ const CustomButton = ({ onClick, label }: CustomButtonProps) => (
 const testVenue = 11
 
 export default function About({}: AboutPageProps) {
-
   const [output, setOutput] = useState<string | null>(null)
 
   const addOutput = (message: string) => {
@@ -43,7 +40,7 @@ export default function About({}: AboutPageProps) {
       email: "valid@email.com",
       phone: "+441234567890",
       description: "This is a valid description.",
-      images: null
+      images: null,
     }
     await venueActions.addVenueAction(validInput)
   }
@@ -53,7 +50,7 @@ export default function About({}: AboutPageProps) {
       email: "validemail.com",
       phone: "+441234567890",
       description: "This is a valid description.",
-      images: null
+      images: null,
     }
     await venueActions.addVenueAction(validInput)
   }
@@ -112,23 +109,63 @@ export default function About({}: AboutPageProps) {
     addOutput(await venueTimeActions.deleteVenueTimeAction(1))
   }
 
-
-  return <div>
-    <div><CustomButton onClick={addValidVenue} label="Add valid venue"/></div>
-    <div><CustomButton onClick={addInvalidVenue} label="Add invalid venue"/></div>
-    <div><CustomButton onClick={getValidVenue} label="Get valid venue"/></div>
-    <div><CustomButton onClick={getInvalidVenue} label="Get invalid venue"/></div>
-    <div><CustomButton onClick={getAllVenues} label="Get all venues"/></div>
-    <div><CustomButton onClick={updateValidDescription} label="Update valid description"/></div>
-    <div><CustomButton onClick={updateInvalidDescription} label="Update invalid description"/></div>
-    <div><CustomButton onClick={deleteValidVenue} label="Delete valid venue"/></div>
-    <div><CustomButton onClick={deleteInvalidVenue} label="Delete invalid venue"/></div>
-    <div><CustomButton onClick={addValidCuisine} label="Add valid cuisine"/></div>
-    <div><CustomButton onClick={addValidTag} label="Add valid tag"/></div>
-    <div><CustomButton onClick={addValidVenueTime} label="Add valid venue time"/></div>
-    <div><CustomButton onClick={deleteValidVenueTime} label="Delete valid venue time"/></div>
-    <div className="border p-4 mt-4">
-      {output}
+  return (
+    <div>
+      <div>
+        <CustomButton onClick={addValidVenue} label="Add valid venue" />
+      </div>
+      <div>
+        <CustomButton onClick={addInvalidVenue} label="Add invalid venue" />
+      </div>
+      <div>
+        <CustomButton onClick={getValidVenue} label="Get valid venue" />
+      </div>
+      <div>
+        <CustomButton onClick={getInvalidVenue} label="Get invalid venue" />
+      </div>
+      <div>
+        <CustomButton onClick={getAllVenues} label="Get all venues" />
+      </div>
+      <div>
+        <CustomButton
+          onClick={updateValidDescription}
+          label="Update valid description"
+        />
+      </div>
+      <div>
+        <CustomButton
+          onClick={updateInvalidDescription}
+          label="Update invalid description"
+        />
+      </div>
+      <div>
+        <CustomButton onClick={deleteValidVenue} label="Delete valid venue" />
+      </div>
+      <div>
+        <CustomButton
+          onClick={deleteInvalidVenue}
+          label="Delete invalid venue"
+        />
+      </div>
+      <div>
+        <CustomButton onClick={addValidCuisine} label="Add valid cuisine" />
+      </div>
+      <div>
+        <CustomButton onClick={addValidTag} label="Add valid tag" />
+      </div>
+      <div>
+        <CustomButton
+          onClick={addValidVenueTime}
+          label="Add valid venue time"
+        />
+      </div>
+      <div>
+        <CustomButton
+          onClick={deleteValidVenueTime}
+          label="Delete valid venue time"
+        />
+      </div>
+      <div className="mt-4 border p-4">{output}</div>
     </div>
-  </div>
+  )
 }

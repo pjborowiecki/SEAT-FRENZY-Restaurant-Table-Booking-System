@@ -1,4 +1,4 @@
-import { MakeBookingForm } from "@/components/forms/make-booking-form"
+import { AddBookingForm } from "@/components/forms/add-booking-form"
 
 export function BookingWidget() {
   return (
@@ -6,7 +6,7 @@ export function BookingWidget() {
       <div className="border-b text-center">
         <h4 className="py-[12px] text-[18px] font-bold">Make a Booking</h4>
       </div>
-      <MakeBookingForm />
+      <AddBookingForm />
     </div>
   )
 }

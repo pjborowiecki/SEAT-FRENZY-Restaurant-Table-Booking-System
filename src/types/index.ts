@@ -1,7 +1,7 @@
+import { type userPrivateMetadataSchema } from "@/validations/auth"
 import type { FileWithPath } from "react-dropzone"
 import type { z } from "zod"
 
-import { type userPrivateMetadataSchema } from "@/lib/validations/auth"
 import type { Icons } from "@/components/icons"
 
 export type UserRole = z.infer<typeof userPrivateMetadataSchema.shape.role>

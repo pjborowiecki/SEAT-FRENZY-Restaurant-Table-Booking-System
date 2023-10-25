@@ -1,6 +1,4 @@
 import type { Metadata } from "next"
-// import { getVenuesAction } from "@/actions/venue"
-import type { Venue } from "@/db/schema"
 import { env } from "@/env.mjs"
 
 import { Shell } from "@/components/shells/shell"
@@ -19,28 +17,10 @@ interface HomePageProps {
   }
 }
 
-export default async function Home({ searchParams }: HomePageProps) {
-  const { page, per_page, sort } = searchParams ?? {}
-
-  // Venues transaction
-  // const limit = typeof per_page === "string" ? parseInt(per_page) : 10
-  // const offset = typeof page === "string" ? (parseInt(page) - 1) * limit : 0
-
-  // const venuesTransaction = await getVenuesAction({
-  //   limit: limit,
-  //   offset: offset,
-  //   sort:
-  //     typeof sort === "string"
-  //       ? (sort as `${keyof Venue | "name"}.${"asc" | "desc"}`)
-  //       : "name.asc",
-  // })
-
-  // const pageCount = Math.ceil(venuesTransaction.total / limit)
-
+export default function Home({ searchParams }: HomePageProps) {
   return (
     <Shell className="flex flex-wrap justify-center">
       {/* <Venues venues={venuesTransaction.items} pageCount={pageCount} /> */}
-      Venues will show up here
     </Shell>
   )
 }

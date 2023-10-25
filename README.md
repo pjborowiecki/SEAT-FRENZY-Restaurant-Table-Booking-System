@@ -52,7 +52,7 @@ The goals is not only to make it a table booking system, but also a full restaur
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com)
 - **Database:** [PlanetScale MySQL](https://planetscale.com/)
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team/)
-- **Authentication:** [Clerk](https://clerk.com/)
+- **Authentication:** [Next-Auth](https://nextauth.org/)
 - **File Upload:** [UploadThing](https://uploadthing.com/)
 - **Forms:** [React Hook Form](https://react-hook-form.com)
 - **Email:** [React Email](https://react.email)
@@ -69,8 +69,6 @@ The goals is not only to make it a table booking system, but also a full restaur
 #### Prerequisites:
 
 - [Node.js (version 18 or higher)](https://nodejs.org)
-- [pNPM](https://pnpm.io)
-- [Ngrok](https://ngrok.com)
   <br>
 
 #### Installation:
@@ -96,14 +94,21 @@ The goals is not only to make it a table booking system, but also a full restaur
 3.  Rename a `.env.example` file in the project's root directory and fill in the required values. See below for details on obtaining the keys:
     <br>
 
-    - **Clerk:** <br><br>
-
-      - Create a new account with [Clerk](https://clerk.com)
-      - _ToDo:_ Complete the setup instructions <br><br>
-
     - **PlanetScale:** <br><br>
 
       - Create a new account with [PlanetScale](https://planetscale.com)
+      - _ToDo:_ Complete the setup instructions <br><br>
+
+    - **OAuth Credentials:** <br><br>
+
+      - _ToDo:_ Complete the setup instructions <br><br>
+
+    - **NextAuth:** <br><br>
+
+      - _ToDo:_ Complete the setup instructions <br><br>
+
+    - **Resend:** <br><br>
+
       - _ToDo:_ Complete the setup instructions <br><br>
 
     - **UploadThing:** <br><br>
@@ -111,64 +116,7 @@ The goals is not only to make it a table booking system, but also a full restaur
       - Create a new account with [UploadThing](https://uploadthing.com)
       - _ToDo:_ Complete the setup instructions <br><br>
 
-    - **Ngrok**: <br><br>
-
-      - _NOTE_: The reason for using Ngrok is to sync users data to our backend. Since authentication and user management happens on Clerk's side, data eventually need to reach the application's back end to allow for creating more complex relations in our database schemas. Clerk provides a way to do that via webhooks, but it requires a public URL. Ngrok allows us to create a tunnel to our local server, so we can test the webhooks locally. The details of the setup can be found [here](https://clerk.com/docs/users/sync-data-to-your-backend). See [this page](https://ngrok.com/docs/integrations/clerk/webhooks/) for instructions on how to set up Ngrok with Clerk for local development.
-
-      ![clerkNgrokWebhookIllustration](https://clerk.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fe1ql88v4%2Fproduction%2F344b217021b87801cc586c96df20c0fd713a795c-2775x2106.png%3Ffit%3Dmax%26auto%3Dformat&w=1920&q=75)
-
-      - Ensure you have ngrok installed on your machine
-      - Create a new account at [Ngrok](https://ngrok.com)
-      - Go to `Yout Authtoken` tab on the left-hand side of the dashboard and copy the token
-      - Run `ngrok config add-authtoken <your_auth_token>` in your terminal window <br><br>
-
-    - **Svix:** <br><br>
-
-      - _NOTE_: Because of the way webhooks work, attackers can impersonate services by simply sending a fake webhook to an endpoint. Think about it: it's just an HTTP POST from an unknown source. This is a potential security hole for many applications, or at the very least, a source of problems. In order to prevent it, Svix signs every webhook and its metadata with a unique key for each endpoint. This signature can then be used to verify the webhook indeed comes from Svix, and only process it if it is. <br><br>
-
-      - Create a new account with [Svix](https://svix.com)
-      - Follow the instructions to add a new app by pasting the commands given in your dashboard into your terminal window
-      - Create a new API Access token and add it to your `.env` file as `SVIX_AUTHTOKEN`<br><br>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p><br>
-
-#### Development: <br><br>
-
-4. Start the development server
-
-   ```sh
-   pnpm dev
-   ```
-
-   <br>
-
-5. Start the ngrok tunnel in another terminal window
-
-   ```sh
-    ngrok http 3000
-   ```
-
-   <br>
-
-6. Copy the forwarding address (e.g., https://ffe6-185-171-71-142.ngrok-free.app) from the terminal output <br><br>
-
-7. Go to your Clerk account dashboard, click on `Webhooks` tab on the left-hand side menu, and click on `Add Webhook` button. Paste the forwarding address into the `Endpoint Url` field. Scroll to the bottom of the `Message Filtering` section and select all user events: `user.created`, `user.deleted`, and `user.updated`. Click on `Create` button. <br><br>
-
-8. Copy the `Signing Secret` from the `Webhooks` tab and add it to your `.env` file as `CLERK_WEBHOOK_SECRET`. <br><br>
-
-9. Detailed instructions for testing can be found [here](https://ngrok.com/docs/integrations/clerk/webhooks/). The output from step 5 should include a `Web Interface` local address, which is usually [http://localhost:4040](https://localhost:4040) and can be accessed for inspecting the webhook requests. When you click on a request, you can see details of both the request and the response. <br><br>
-
-10. Your app should be available at [http://localhost:3000](https://localhost:3000)
-    <br>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p><br>
-
-#### Deployment:
-
-ToDo: Complete the deployment instructions
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-<br>
 
 <!-- CONTRIBUTING -->
 
@@ -195,6 +143,24 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT License.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
@@ -204,32 +170,3 @@ Distributed under the MIT License.
 Piotr Borowiecki - [@pjborowiecki](https://www.linkedin.com/in/pjborowiecki/) - hello@pjborowiecki.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## ToDo
-
-- [ ] Integrate Clerk database with the app database schema via webhooks
-- [ ] Refactor and improve the Clerk auth webhook handler
-- [ ] Update headers (merge into one component with variants)
-- [ ] Fix the `getVenuesAction` server action
-- [ ] Finish the `venues` component
-- [ ] Modify validation, so venues with the same name are allowed, as long as they are in different locations
-- [ ] Modify the venue model, so it is possible to define multiple opening and closing times for each day of the week
-- [ ] Decide on the `cuisine` and `location` types for a Venue model, then update forms, schemas, and validations accordingly
-- [ ] Decide on the `opening time` and `closing time` types for a Venue model, then update forms, schemas, and validations accordingly
-- [ ] Decide on the `date` and `time` types for a Booking model, then update forms, schemas, and validations accordingly
-- [ ] Complete the loading pages
-- [ ] Make the search bar functional
-- [x] Fix hydration errors (ui/card component)
-- [ ] Finish styling components
-- [ ] Fix and improve responsiveness
-- [ ] Finish the booking and venue forms (with validations)
-- [x] Add auth form validation
-- [x] Add authentication
-- [ ] Add blogging functionality
-- [ ] Add a newsletter
-- [ ] Create the terms and conditions pages
-- [ ] Crete the privacy policy page
-- [ ] Create the about page
-- [ ] Create the contact page
-- [ ] Create the faq page
-- [ ] Add email notifications

@@ -1,19 +1,15 @@
-import { currentUser } from "@clerk/nextjs"
-
-import { Footer } from "@/components/layouts/footer"
-import { Header } from "@/components/layouts/header"
+import { Footer } from "@/components/nav/footer"
+import { Header } from "@/components/nav/header"
 
 interface LandingProps {
   children: React.ReactNode
 }
 
-export default async function LandingLayout({ children }: LandingProps) {
-  const user = await currentUser()
-
+export default function LandingLayout({ children }: LandingProps) {
   return (
-    <div className="relative flex min-h-screen flex-col">
-      <Header user={user} />
-      <main className="flex-1">{children}</main>
+    <div className="relative flex w-full flex-col">
+      <Header />
+      <main className="min-h-screen flex-1">{children}</main>
       <Footer />
     </div>
   )

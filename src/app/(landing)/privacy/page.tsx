@@ -1,5 +1,3 @@
-interface PrivacyPageProps {}
-
-export default function Privacy({}: PrivacyPageProps) {
+export default function PrivacyPolicyPage() {
   return <div>TODO: Privacy Policy Page</div>
 }

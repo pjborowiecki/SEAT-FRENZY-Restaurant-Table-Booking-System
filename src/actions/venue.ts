@@ -3,16 +3,19 @@
 import { revalidatePath } from "next/cache"
 import { db } from "@/db"
 import { venues } from "@/db/schema"
+import { venueSchema } from "@/validations/venue"
 import { eq, sql } from "drizzle-orm"
 import type { z } from "zod"
+
 import { slugify } from "@/lib/utils"
-import { venueSchema } from "@/lib/validations/venue"
 
 export type VenueType = z.infer<typeof venueSchema>
-export type VenueNameType = z.infer<typeof venueSchema['shape']['name']>
-export type VenueDescriptionType = z.infer<typeof venueSchema['shape']['description']>
-export type VenuePhoneType = z.infer<typeof venueSchema['shape']['phone']>
-export type VenueEmailType = z.infer<typeof venueSchema['shape']['email']>
+export type VenueNameType = z.infer<(typeof venueSchema)["shape"]["name"]>
+export type VenueDescriptionType = z.infer<
+  (typeof venueSchema)["shape"]["description"]
+>
+export type VenuePhoneType = z.infer<(typeof venueSchema)["shape"]["phone"]>
+export type VenueEmailType = z.infer<(typeof venueSchema)["shape"]["email"]>
 
 /**
  * TODO
@@ -28,17 +31,19 @@ export async function addVenueAction(venue: VenueType) {
       slug: slugify(validationResult.data.name!!),
       email: validationResult.data.email,
       phone: validationResult.data.phone,
-      description: validationResult.data.description
+      description: validationResult.data.description,
     })
     revalidatePath("/dashboard/venues")
   } else {
-    throw new Error("Validation failed: " + JSON.stringify(validationResult.error))
+    throw new Error(
+      "Validation failed: " + JSON.stringify(validationResult.error)
+    )
   }
 }
 
 export async function deleteVenueAction(venueId: number) {
-    const result = await db.delete(venues).where(eq(venues.id, venueId))
-    return `Deleted venue ${venueId}`
+  const result = await db.delete(venues).where(eq(venues.id, venueId))
+  return `Deleted venue ${venueId}`
 }
 
 export async function getVenueAction(venueId: number) {
@@ -49,9 +54,11 @@ export async function getVenueAction(venueId: number) {
 export async function getAllVenuesAction() {
   const [items, total] = await db.transaction(async (tx) => {
     const items = await tx.select().from(venues)
-    const total = await tx.select({
-      count: sql<number>`count(*)`,
-    }).from(venues)
+    const total = await tx
+      .select({
+        count: sql<number>`count(*)`,
+      })
+      .from(venues)
     return [items, Number(total[0]?.count) ?? 0]
   })
   return [items, total]
@@ -60,52 +67,74 @@ export async function getAllVenuesAction() {
 export async function setNameAction(venueId: number, newName: VenueNameType) {
   const validationResult = venueSchema.shape.name.safeParse(newName)
   if (validationResult.success) {
-    const result = await db.update(venues)
+    const result = await db
+      .update(venues)
       .set({ name: validationResult.data, updatedAt: new Date() })
       .where(eq(venues.id, venueId))
     return `Updated name to ${validationResult.data} for venue ${venueId}`
   } else {
-    throw new Error(`Validation failed: ${JSON.stringify(validationResult.error)}`)
+    throw new Error(
+      `Validation failed: ${JSON.stringify(validationResult.error)}`
+    )
   }
 }
 
-export async function setDescriptionAction(venueId: number, newDescription: VenueDescriptionType) {
-  const validationResult = venueSchema.shape.description.safeParse(newDescription)
+export async function setDescriptionAction(
+  venueId: number,
+  newDescription: VenueDescriptionType
+) {
+  const validationResult =
+    venueSchema.shape.description.safeParse(newDescription)
   if (validationResult.success) {
-    const result = await db.update(venues)
+    const result = await db
+      .update(venues)
       .set({ description: validationResult.data, updatedAt: new Date() })
       .where(eq(venues.id, venueId))
     return `Updated description to ${validationResult.data} for venue ${venueId}`
   } else {
-    throw new Error(`Validation failed: ${JSON.stringify(validationResult.error)}`)
+    throw new Error(
+      `Validation failed: ${JSON.stringify(validationResult.error)}`
+    )
   }
 }
 
-export async function setPhoneAction(venueId: number, newPhone: VenuePhoneType) {
+export async function setPhoneAction(
+  venueId: number,
+  newPhone: VenuePhoneType
+) {
   const validationResult = venueSchema.shape.description.safeParse(newPhone)
   if (validationResult.success) {
-    const result = await db.update(venues)
+    const result = await db
+      .update(venues)
       .set({ phone: validationResult.data, updatedAt: new Date() })
       .where(eq(venues.id, venueId))
     return `Updated phone number to ${validationResult.data} for venue ${venueId}`
   } else {
-    throw new Error(`Validation failed: ${JSON.stringify(validationResult.error)}`)
+    throw new Error(
+      `Validation failed: ${JSON.stringify(validationResult.error)}`
+    )
   }
 }
 
-export async function setEmailAction(venueId: number, newEmail: VenueEmailType) {
+export async function setEmailAction(
+  venueId: number,
+  newEmail: VenueEmailType
+) {
   const validationResult = venueSchema.shape.email.safeParse(newEmail)
   if (validationResult.success) {
-    const result = await db.update(venues)
+    const result = await db
+      .update(venues)
       .set({ email: validationResult.data, updatedAt: new Date() })
       .where(eq(venues.id, venueId))
     return `Updated email address to ${validationResult.data} for venue ${venueId}`
   } else {
-    throw new Error(`Validation failed: ${JSON.stringify(validationResult.error)}`)
+    throw new Error(
+      `Validation failed: ${JSON.stringify(validationResult.error)}`
+    )
   }
 }
 
-// export async function getVenuesAction(input: { 
+// export async function getVenuesAction(input: {
 //   description?: string
 //   limit?: number
 //   offset?: number

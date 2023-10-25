@@ -1,5 +1,5 @@
 import { Menu } from "@/components/menu/menu"
-import { VenueNav } from "@/components/venue/venue-nav"
+import { VenueNav } from "@/components/venue-nav"
 
 export default function RestaurantMenu() {
   return (

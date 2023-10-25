@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { addVenueAction } from "@/actions/venue"
 import { venues } from "@/db/schema"
 import type { FileWithPreview } from "@/types"
+import { venueSchema } from "@/validations/venue"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { generateReactHelpers } from "@uploadthing/react/hooks"
 import { useForm } from "react-hook-form"
@@ -13,7 +14,6 @@ import { toast } from "sonner"
 import type { z } from "zod"
 
 import { catchError, isArrayOfFile } from "@/lib/utils"
-import { venueSchema } from "@/lib/validations/venue"
 import { Button } from "@/components/ui/button"
 import {
   Form,

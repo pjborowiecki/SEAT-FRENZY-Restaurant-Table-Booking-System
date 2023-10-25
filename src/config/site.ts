@@ -3,22 +3,33 @@ import type { FooterItem, MainNavItem } from "@/types"
 export type SiteConfig = typeof siteConfig
 
 const links = {
-  twitter: "https://twitter.com/",
+  twitter: "https://twitter.com/pjborowiecki",
+  linkedin: "https://linkedin.com/in/pjborowiecki",
   facebook: "https://facebook.com/",
   instagram: "https://instagram.com/",
   github:
     "https://github.com/pjborowiecki/https://github.com/pjborowiecki/SeatFrenzy-Restaurant-Table-Booking-System",
   main: "http://localhost:3000",
+  authorsWebsite: "https://pawelborowiecki.com",
   ogImage: "http://localhost:3000/opengraph-image.png",
 }
 
 export const siteConfig = {
   name: "SeatFrenzy",
   description:
-    "SeatFrenzy is a restaraunt booking system, allowing users to quickly book tables at their favourite restaurants. Built with Next.js 13, Drizzle ORM (with PostgreSQL hosten on PlanetScale), and TailwindCSS.",
+    "SeatFrenzy is a restaraunt booking system, allowing users to quickly book tables at their favourite restaurants. Built with Next.js 13, Next-Auth, Drizzle ORM (with PostgreSQL hosted on PlanetScale), and TailwindCSS.",
   url: links.main,
   ogImage: links.ogImage,
   links,
+  author: "pjborowiecki",
+  hostingRegion: "fra1",
+  keywords: [
+    "Restaurant table booking",
+    "Booking system",
+    "Table booking",
+    "Restaurant booking",
+    "OpenTable alternative",
+  ],
   mainNav: [
     {
       title: "About Us",
