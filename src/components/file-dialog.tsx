@@ -53,7 +53,7 @@ export function FileDialog<TFieldValues extends FieldValues>({
   disabled = false,
   className,
   ...props
-}: FileDialogProps<TFieldValues>) {
+}: FileDialogProps<TFieldValues>): JSX.Element {
   const onDrop = React.useCallback(
     (acceptedFiles: FileWithPath[], rejectedFiles: FileRejection[]) => {
       setValue(

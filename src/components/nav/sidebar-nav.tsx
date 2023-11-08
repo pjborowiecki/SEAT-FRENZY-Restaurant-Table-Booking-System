@@ -11,7 +11,7 @@ export interface SidebarNavProps {
   items: SidebarNavItem[]
 }
 
-export function SidebarNav({ items }: SidebarNavProps) {
+export function SidebarNav({ items }: SidebarNavProps): JSX.Element | null {
   const pathname = usePathname()
 
   if (!items?.length) return null

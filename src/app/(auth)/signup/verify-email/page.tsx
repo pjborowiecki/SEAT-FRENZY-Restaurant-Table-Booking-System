@@ -30,7 +30,7 @@ interface VerifyEmailPageProps {
 
 export default async function VerifyEmailPage({
   searchParams,
-}: VerifyEmailPageProps) {
+}: VerifyEmailPageProps): Promise<JSX.Element> {
   const emailVerificationToken = searchParams.token as string
 
   if (emailVerificationToken) {

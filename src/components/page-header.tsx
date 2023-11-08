@@ -49,7 +49,7 @@ export const PageHeader = ({
   balancedTitle = false,
   balacedDescription = true,
   ...props
-}: PageHeaderProps) => {
+}: PageHeaderProps): JSX.Element => {
   const Title = balancedTitle ? Balancer : "h1"
   const Description = balacedDescription ? Balancer : "h2"
 

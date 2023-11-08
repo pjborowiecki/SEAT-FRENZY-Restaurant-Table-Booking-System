@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { Venue } from "@/db/schemas/venues.schema"
 
 import { useDebounce } from "@/hooks/use-debounce"
 import { cn } from "@/lib/utils"
@@ -17,7 +18,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { Icons } from "@/components/icons"
 
-export function SearchBar() {
+export function SearchBar(): JSX.Element {
   const router = useRouter()
   const [query, setQuery] = React.useState("")
   const debouncedQuery = useDebounce(query, 300)

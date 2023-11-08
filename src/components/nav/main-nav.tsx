@@ -21,7 +21,7 @@ interface MainNavProps {
   items?: MainNavItem[]
 }
 
-export function MainNav({ items }: MainNavProps) {
+export function MainNav({ items }: MainNavProps): JSX.Element {
   return (
     <div className="hidden flex-1 gap-6 lg:flex">
       <Link

@@ -1,8 +1,8 @@
-import { SignOutButtons } from "@/components/auth/signout-button"
+import { SignOutButton } from "@/components/auth/signout-button"
 import { PageHeader } from "@/components/page-header"
 import { Shell } from "@/components/shells/shell"
 
-export default function SignOutPage() {
+export default function SignOutPage(): JSX.Element {
   return (
     <Shell className="max-w-xs">
       <PageHeader
@@ -11,7 +11,7 @@ export default function SignOutPage() {
         size="sm"
         className="text-center"
       />
-      <SignOutButtons />
+      <SignOutButton />
     </Shell>
   )
 }

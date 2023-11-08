@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Add a new venue",
 }
 
-export default function NewVenuePage() {
+export default function NewVenuePage(): JSX.Element {
   return (
     <Shell variant="sidebar">
       <PageHeader title="New Venue" description="Add a new venue" size="sm" />

@@ -6,7 +6,9 @@ interface VenueLayoutProps {
   children: React.ReactNode
 }
 
-export default function VenueLayout({ children }: VenueLayoutProps) {
+export default function VenueLayout({
+  children,
+}: VenueLayoutProps): JSX.Element {
   return (
     <>
       <VenueHeader />

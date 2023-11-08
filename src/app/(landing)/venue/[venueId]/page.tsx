@@ -33,7 +33,7 @@ interface VenuePageProps {
 export default async function VenuePage({
   params,
   searchParams,
-}: VenuePageProps) {
+}: VenuePageProps): Promise<JSX.Element> {
   const venueId = Number(params.venueId)
 
   // const venue = await db.query.venues.findFirst({

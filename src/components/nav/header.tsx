@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { getServerSession } from "next-auth/next"
 
 import { dashboardConfig } from "@/config/dashboard"
 import { siteConfig } from "@/config/site"
+import { getCurrentUser } from "@/lib/auth"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -19,10 +19,9 @@ import { SignOutButton } from "@/components/auth/signout-button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/nav/main-nav"
 import { MobileNav } from "@/components/nav/mobile-nav"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
-export async function Header() {
-  const session = await getServerSession(authOptions)
+export async function Header(): Promise<JSX.Element> {
+  const user = await getCurrentUser()
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
@@ -34,19 +33,19 @@ export async function Header() {
         />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-2">
-            {session ? (
+            {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="user" size="icon">
                     <Avatar className="h-full w-full">
-                      {session.user?.image && (
+                      {user?.image && (
                         <AvatarImage
-                          src={session.user?.image}
-                          alt={session.user?.name ?? "user's profile picture"}
+                          src={user?.image}
+                          alt={user?.name ?? "user's profile picture"}
                         />
                       )}
                       <AvatarFallback className="text-xs capitalize">
-                        {session.user?.email && session.user.email.charAt(0)}
+                        {user?.email && user.email.charAt(0)}
                       </AvatarFallback>{" "}
                     </Avatar>
                   </Button>
@@ -55,10 +54,10 @@ export async function Header() {
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium leading-none">
-                        {session.user?.name}
+                        {user?.name}
                       </p>
                       <p className="text-xs leading-none text-muted-foreground">
-                        {session.user?.email}
+                        {user?.email}
                       </p>
                     </div>
                   </DropdownMenuLabel>

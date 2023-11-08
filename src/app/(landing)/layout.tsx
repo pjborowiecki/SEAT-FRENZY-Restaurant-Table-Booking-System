@@ -5,7 +5,7 @@ interface LandingProps {
   children: React.ReactNode
 }
 
-export default function LandingLayout({ children }: LandingProps) {
+export default function LandingLayout({ children }: LandingProps): JSX.Element {
   return (
     <div className="relative flex w-full flex-col">
       <Header />

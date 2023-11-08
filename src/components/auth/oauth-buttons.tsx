@@ -7,7 +7,7 @@ import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
-async function handleOAuthSignIn(provider: string) {
+async function handleOAuthSignIn(provider: string): Promise<void> {
   try {
     await signIn(provider, {
       callbackUrl: `${window.location.origin}/`,
@@ -18,7 +18,7 @@ async function handleOAuthSignIn(provider: string) {
   }
 }
 
-export function OAuthButtons() {
+export function OAuthButtons(): JSX.Element {
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <Button

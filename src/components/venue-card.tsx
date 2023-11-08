@@ -26,7 +26,7 @@ export function VenueCard({
   variant = "default",
   className,
   ...props
-}: VenueCardProps) {
+}: VenueCardProps): JSX.Element {
   return variant === "default" ? (
     <Card
       className={cn(

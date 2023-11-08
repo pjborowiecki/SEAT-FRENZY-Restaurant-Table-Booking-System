@@ -1,12 +1,11 @@
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth/next"
 
 import { dashboardConfig } from "@/config/dashboard"
+import { getCurrentUser } from "@/lib/auth"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Footer } from "@/components/nav/footer"
 import { DashboardHeader } from "@/components/nav/header-dashboard"
 import { SidebarNav } from "@/components/nav/sidebar-nav"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -14,9 +13,9 @@ interface DashboardLayoutProps {
 
 export default async function DashboardLayout({
   children,
-}: DashboardLayoutProps) {
-  const session = await getServerSession(authOptions)
-  if (!session) redirect("/signin")
+}: DashboardLayoutProps): Promise<JSX.Element> {
+  const user = await getCurrentUser()
+  if (!user) redirect("/signin")
 
   return (
     <div className="flex min-h-screen flex-col">

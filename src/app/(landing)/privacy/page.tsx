@@ -1,3 +1,3 @@
-export default function PrivacyPolicyPage() {
+export default function PrivacyPolicyPage(): JSX.Element {
   return <div>TODO: Privacy Policy Page</div>
 }

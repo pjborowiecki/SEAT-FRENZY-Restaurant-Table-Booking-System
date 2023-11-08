@@ -1,7 +1,7 @@
 import { ErrorCard } from "@/components/error-card"
 import { Shell } from "@/components/shells/shell"
 
-export default function ProductNotFound() {
+export default function ProductNotFound(): JSX.Element {
   return (
     <Shell className="mt-20 max-w-md justify-center">
       <ErrorCard

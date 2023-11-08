@@ -1,4 +1,4 @@
-export function VenueReviewCard() {
+export function VenueReviewCard(): JSX.Element {
   return (
     <div className="mb-7 border-b pb-7">
       <div className="flex">

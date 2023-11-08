@@ -23,7 +23,10 @@ interface MobileNavProps {
   sidebarNavItems: SidebarNavItem[]
 }
 
-export function MobileNav({ mainNavItems, sidebarNavItems }: MobileNavProps) {
+export function MobileNav({
+  mainNavItems,
+  sidebarNavItems,
+}: MobileNavProps): JSX.Element {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = React.useState(false)
 

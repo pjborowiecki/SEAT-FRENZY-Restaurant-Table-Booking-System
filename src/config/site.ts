@@ -17,7 +17,7 @@ const links = {
 export const siteConfig = {
   name: "SeatFrenzy",
   description:
-    "SeatFrenzy is a restaraunt booking system, allowing users to quickly book tables at their favourite restaurants. Built with Next.js 13, Next-Auth, Drizzle ORM (with PostgreSQL hosted on PlanetScale), and TailwindCSS.",
+    "SeatFrenzy is a restaraunt booking system, allowing users to quickly book tables at their favourite restaurants. Built with Next.js 14, Next-Auth, Drizzle ORM (with MySQL hosted on PlanetScale), and TailwindCSS.",
   url: links.main,
   ogImage: links.ogImage,
   links,

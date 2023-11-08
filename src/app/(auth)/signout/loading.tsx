@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { PageHeader } from "@/components/page-header"
 import { Shell } from "@/components/shells/shell"
 
-export default function SignOutLoading() {
+export default function SignOutLoading(): JSX.Element {
   return (
     <Shell className="max-w-xs">
       <PageHeader

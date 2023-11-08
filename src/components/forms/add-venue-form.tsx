@@ -45,7 +45,7 @@ type Inputs = z.infer<typeof venueSchema>
 
 const { useUploadThing } = generateReactHelpers<OurFileRouter>()
 
-export function AddVenueForm({}: AddVenueFormProps) {
+export function AddVenueForm({}: AddVenueFormProps): JSX.Element {
   const router = useRouter()
   const [isPending, startTransition] = React.useTransition()
   const [files, setFiles] = React.useState<FileWithPreview[] | null>(null)
@@ -66,7 +66,7 @@ export function AddVenueForm({}: AddVenueFormProps) {
 
   const previews = form.watch("images") as FileWithPreview[] | null
 
-  function onSubmit(data: Inputs) {
+  function onSubmit(data: Inputs): void {
     startTransition(async () => {
       try {
         const images = isArrayOfFile(data.images)

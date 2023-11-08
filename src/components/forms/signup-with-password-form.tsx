@@ -24,7 +24,7 @@ import { PasswordInput } from "@/components/password-input"
 
 type SignUpWithPasswordFormInputs = z.infer<typeof signUpWithPasswordSchema>
 
-export function SignUpWithPasswordForm() {
+export function SignUpWithPasswordForm(): JSX.Element {
   const router = useRouter()
   const [isPending, startTransition] = React.useTransition()
 
@@ -37,7 +37,7 @@ export function SignUpWithPasswordForm() {
     },
   })
 
-  function onSubmit(formData: SignUpWithPasswordFormInputs) {
+  function onSubmit(formData: SignUpWithPasswordFormInputs): void {
     startTransition(async () => {
       try {
         const message = await signUpWithPasswordAction(
@@ -45,17 +45,20 @@ export function SignUpWithPasswordForm() {
           formData.password
         )
 
-        if (message === "success") {
-          toast.message("Success!", {
-            description: "Check your inbox and verify your email address",
-          })
-          router.push("/signin")
-        } else if (message === "exists") {
-          toast.error("User with this email address already exists")
-          form.reset()
-        } else {
-          toast.error("Error creating account. Please try again")
-          router.push("/signin")
+        switch (message) {
+          case "success":
+            toast.message("Success!", {
+              description: "Check your inbox and verify your email address",
+            })
+            router.push("/signin")
+            break
+          case "exists":
+            toast.error("User with this email address already exists")
+            form.reset()
+            break
+          default:
+            toast.error("Error creating account. Please try again")
+            router.push("/signin")
         }
       } catch (error) {
         toast.error("Something went wrong. Please try again")

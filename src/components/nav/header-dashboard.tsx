@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { getServerSession } from "next-auth/next"
+import { redirect } from "next/navigation"
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+import { getCurrentUser } from "@/lib/auth"
 
-export function DashboardHeader() {
-  const session = getServerSession(authOptions)
+export async function DashboardHeader(): Promise<JSX.Element> {
+  const user = await getCurrentUser()
+  if (!user) redirect("/signin")
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">

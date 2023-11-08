@@ -26,7 +26,7 @@ interface VenuesProps {
   pageCount: number
 }
 
-export function Venues({ venues, pageCount }: VenuesProps) {
+export function Venues({ venues, pageCount }: VenuesProps): JSX.Element {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
